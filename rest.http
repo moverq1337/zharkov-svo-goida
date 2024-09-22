@@ -1,0 +1,8 @@
+###
+POST http://localhost:8080/example
+Authorization: Bearer {{$auth.token("access-token")}}
+
+{
+  "title": "lala",
+  "description": "lala"
+}
