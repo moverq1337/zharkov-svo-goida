@@ -1,0 +1,281 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "comission/commission.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ComissionService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/commision/doctor": {
+      "get": {
+        "summary": "Get Doctor",
+        "description": "Добавление нового призывника",
+        "operationId": "ComissionService_GetDoctor",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/comissionGetDoctorRs"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "doctorId",
+            "description": "Doctor Id\n\nId доктора",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ComissionService"
+        ]
+      },
+      "post": {
+        "summary": "Add Doctor",
+        "description": "Добавление нового доктора",
+        "operationId": "ComissionService_AddDoctor",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/comissionAddDoctorRs"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/comissionAddDoctorRq"
+            }
+          }
+        ],
+        "tags": [
+          "ComissionService"
+        ]
+      }
+    },
+    "/commision/conscript": {
+      "post": {
+        "summary": "Add Conscript",
+        "description": "Добавление нового призывника",
+        "operationId": "ComissionService_AddConscript",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/comissionAddConscriptRs"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/comissionAddConscriptRq"
+            }
+          }
+        ],
+        "tags": [
+          "ComissionService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "comissionAddConscriptRq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Имя пользователя",
+          "title": "Name"
+        },
+        "surname": {
+          "type": "string",
+          "description": "Фамилия пользователя",
+          "title": "Surname"
+        },
+        "patronymic": {
+          "type": "string",
+          "description": "Отчество пользователя",
+          "title": "Patronymic"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Возраст пользователя",
+          "title": "Age"
+        }
+      },
+      "title": "Add Conscript Request"
+    },
+    "comissionAddConscriptRs": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Имя пользователя",
+          "title": "Name"
+        },
+        "surname": {
+          "type": "string",
+          "description": "Фамилия пользователя",
+          "title": "Surname"
+        },
+        "patronymic": {
+          "type": "string",
+          "description": "Отчество пользователя",
+          "title": "Patronymic"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Возраст пользователя",
+          "title": "Age"
+        },
+        "id": {
+          "type": "string",
+          "description": "Id пользователя",
+          "title": "Id"
+        }
+      },
+      "title": "Add Conscript Request"
+    },
+    "comissionAddDoctorRq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Имя врача",
+          "title": "Name"
+        },
+        "surname": {
+          "type": "string",
+          "description": "Фамилия врача",
+          "title": "Surname"
+        },
+        "cabient": {
+          "type": "string",
+          "description": "Кабинет врача",
+          "title": "Cabinet"
+        }
+      },
+      "title": "Add Doctor Request"
+    },
+    "comissionAddDoctorRs": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Имя врача",
+          "title": "Name"
+        },
+        "surname": {
+          "type": "string",
+          "description": "Фамилия врача",
+          "title": "Surname"
+        },
+        "cabient": {
+          "type": "string",
+          "description": "Кабинет врача",
+          "title": "Cabinet"
+        },
+        "id": {
+          "type": "string",
+          "description": "Id врача",
+          "title": "Id"
+        }
+      },
+      "title": "Add Doctor Response"
+    },
+    "comissionGetDoctorRs": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Имя врача",
+          "title": "Name"
+        },
+        "surname": {
+          "type": "string",
+          "description": "Фамилия врача",
+          "title": "Surname"
+        },
+        "cabient": {
+          "type": "string",
+          "description": "Кабинет врача",
+          "title": "Cabinet"
+        },
+        "id": {
+          "type": "string",
+          "description": "Id врача",
+          "title": "Id"
+        }
+      },
+      "title": "Get Doctor Response"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

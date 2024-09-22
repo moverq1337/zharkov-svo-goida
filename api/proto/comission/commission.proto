@@ -1,0 +1,179 @@
+syntax = "proto3";
+
+package voenkomat.comission;
+
+option go_package = "pkg/api/grpc/golang/comission";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+service ComissionService {
+  rpc AddDoctor(AddDoctorRq) returns (AddDoctorRs) {
+    option (google.api.http) = {
+      post: "/commision/doctor"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Add Doctor"
+      description: "Добавление нового доктора"
+    };
+  }
+  rpc AddConscript(AddConscriptRq) returns (AddConscriptRs){
+    option (google.api.http) = {
+      post: "/commision/conscript"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Add Conscript"
+      description: "Добавление нового призывника"
+    };
+  }
+  rpc GetDoctor(GetDocotrRq) returns (GetDoctorRs) {
+    option (google.api.http) = {
+      get: "/commision/doctor",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get Doctor"
+      description: "Добавление нового призывника"
+    };
+  }
+}
+
+message AddDoctorRq {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Add Doctor Request"
+    }
+  };
+
+  string name = 1[(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Name",
+    description: "Имя врача"
+  }];
+  string surname = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Surname",
+    description: "Фамилия врача"
+  }];
+  string cabient = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Cabinet",
+    description: "Кабинет врача"
+  }];
+}
+
+message AddDoctorRs {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Add Doctor Response"
+    }
+  };
+
+  string name = 1[(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Name",
+    description: "Имя врача"
+  }];
+  string surname = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Surname",
+    description: "Фамилия врача"
+  }];
+  string cabient = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Cabinet",
+    description: "Кабинет врача"
+  }];
+  string id = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Id",
+    description: "Id врача"
+  }];
+}
+
+message AddConscriptRq {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Add Conscript Request"
+    }
+  };
+
+  string name = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Name",
+    description: "Имя пользователя"
+  }];
+  string surname = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Surname",
+    description: "Фамилия пользователя"
+  }];
+  string patronymic = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Patronymic",
+    description: "Отчество пользователя"
+  }];
+  int32 age = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Age",
+    description: "Возраст пользователя"
+  }];
+}
+
+message AddConscriptRs {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Add Conscript Request"
+    }
+  };
+
+  string name = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Name",
+    description: "Имя пользователя"
+  }];
+  string surname = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Surname",
+    description: "Фамилия пользователя"
+  }];
+  string patronymic = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Patronymic",
+    description: "Отчество пользователя"
+  }];
+  int32 age = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Age",
+    description: "Возраст пользователя"
+  }];
+  string id = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Id",
+    description: "Id пользователя"
+  }];
+}
+
+message GetDocotrRq {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Get Doctor Request"
+    }
+  };
+
+  string doctor_id = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Doctor Id",
+    description: "Id доктора"
+  }];
+}
+
+message GetDoctorRs {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Get Doctor Response"
+    }
+  };
+
+  string name = 1[(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Name",
+    description: "Имя врача"
+  }];
+  string surname = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Surname",
+    description: "Фамилия врача"
+  }];
+  string cabient = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Cabinet",
+    description: "Кабинет врача"
+  }];
+  string id = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Id",
+    description: "Id врача"
+  }];
+}

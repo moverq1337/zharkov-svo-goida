@@ -3,7 +3,6 @@ package delivery
 import (
 	"context"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	"github.com/neiasit/auth-library/provider"
 	grpcLib "github.com/neiasit/grpc-library/core"
 	examplegen "github.com/neiasit/service-boilerplate/pkg/api/grpc/golang"
 	"google.golang.org/grpc"
@@ -21,13 +20,9 @@ func RegisterHandlers(
 	grpcGtw *runtime.ServeMux,
 	grpcConfig *grpcLib.Config,
 	logger *slog.Logger,
-	provider provider.AuthProvider,
 ) {
 
 	ctx := context.Background()
-
-	rootPath := "/ExampleService"
-	provider.AddEndpointSecurity(rootPath+"/ExampleReq", "admin")
 
 	impl := &ExampleHandlers{logger: logger}
 	examplegen.RegisterExampleServiceServer(grpcSrv, impl)

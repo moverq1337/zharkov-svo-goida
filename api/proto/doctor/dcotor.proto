@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package voenkomat.doctor;
+
+option go_package = "pkg/api/grpc/golang/doctor";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+service DoctorService {
+  rpc Next(google.protobuf.Empty) returns (NextRs) {
+    option (google.api.http) = {
+      post: "/doctor/next"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Doctor Next"
+      description: "Следующий призывник"
+    };
+  }
+  rpc FreeConscript(FreeConscriptRq) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/doctor/free"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Free Conscript"
+      description: "Отпустить призывника"
+    };
+  }
+}
+
+
+
+message NextRs {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Next Resposne",
+      description: "ответ на запрос на следующего призывника"
+    }
+  };
+
+  string name = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Name",
+    description: "Имя пользователя"
+  }];
+  string surname = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Surname",
+    description: "Фамилия пользователя"
+  }];
+  string patronymic = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Patronymic",
+    description: "Отчество пользователя"
+  }];
+  int32 age = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Age",
+    description: "Возраст пользователя"
+  }];
+  string id = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Id",
+    description: "Id пользователя"
+  }];
+}
+
+
+message FreeConscriptRq {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Free Conscript Request",
+      description: "Освободить призывника"
+    }
+  };
+
+  string id = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    title: "Id",
+    description: "Id пользователя"
+  }];
+}

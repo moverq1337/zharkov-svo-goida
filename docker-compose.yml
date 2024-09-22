@@ -8,21 +8,15 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
-    restart: always
+    restart: unless-stopped
 
-  keycloak:
-    image: quay.io/keycloak/keycloak:25.0
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+  postgres:
+    image: postgres:latest
     ports:
-      - "8180:8080"
-    command:
-      - start-dev
-      - --import-realm
-    volumes:
-      - ./keycloak/realms:/opt/keycloak/data/import
-      - ./keycloak/providers:/opt/keycloak/providers
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    restart: unless-stopped
 
 volumes:
   redis_data:
