@@ -35,4 +35,4 @@
 - [protoc](https://grpc-io.netlify.app/docs/protoc-installation/) - инструмент кодо-генерации из protobuf
 - [buf](https://buf-build-git-psachs-docs-and-search-bufbuild.vercel.app/docs/) - более модный новый молодежный инструмент кодогенерации из protobuf, но не работает в России 😢
 - [gomock](https://github.com/uber-go/mock) - библиотека от uber с самым богатым функционалом по созданию моков
-- [fx](https://uber-go.github.io/fx/get-started/) - самое удобное решение для di в golang, убирает много лишнего кода
+- [fx](https://uber-go.github.io/fx/get-started/) - самое удобное решение для di в golang, убирает много лишнего кода# military-registration
