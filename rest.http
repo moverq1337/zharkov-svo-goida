@@ -1,8 +1,9 @@
 ###
-POST http://localhost:8080/example
-Authorization: Bearer {{$auth.token("access-token")}}
+POST http://localhost:8080/commision/doctor
+Content-Type: application/json
 
 {
-  "title": "lala",
-  "description": "lala"
+  "name": "Penis",
+  "surname": "Zharkov",
+  "cabient": "32"
 }

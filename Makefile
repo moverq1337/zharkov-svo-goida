@@ -181,3 +181,9 @@ validate-project:
 	@mkdir -p $(VENDOR_DIR)/protoc-gen-openapiv2
 	@mv $(VENDOR_DIR)/grpc-gateway/protoc-gen-openapiv2/options $(VENDOR_DIR)/protoc-gen-openapiv2
 	@rm -rf $(VENDOR_DIR)/grpc-gateway
+
+migrations-up:
+	@migrate -path ./migrations -database "postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable" up
+
+migrations-down:
+	migrate -path ./migrations -database "postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable" down

@@ -6,7 +6,8 @@ import (
 	grpcLib "github.com/neiasit/grpc-library"
 	httpSupport "github.com/neiasit/http-support-library"
 	loggingLib "github.com/neiasit/logging-library"
-	"github.com/neiasit/service-boilerplate/internal/example_domain_first"
+	"github.com/neiasit/service-boilerplate/internal/doctor"
+	"github.com/neiasit/service-boilerplate/internal/user"
 	"github.com/neiasit/service-boilerplate/pkg/infrastructure/postgres"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
@@ -24,7 +25,6 @@ func main() {
 		}),
 
 		// including platform libs here
-		loggingLib.Module,
 		grpcLib.Module,
 		httpSupport.Module,
 
@@ -32,6 +32,7 @@ func main() {
 		postgres.Module,
 
 		// setting logger
+		loggingLib.Module,
 		fx.WithLogger(func(logger *slog.Logger, db *sqlx.DB) fxevent.Logger {
 			return &fxevent.SlogLogger{
 				Logger: logger,
@@ -39,7 +40,8 @@ func main() {
 		}),
 
 		// including app modules here
-		example_domain_first.Module,
+		doctor.Module,
+		user.Module,
 	)
 
 	app.Run()
