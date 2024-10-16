@@ -3,6 +3,8 @@ package delivery
 import (
 	"context"
 	"fmt"
+	"log/slog"
+
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	grpcLib "github.com/neiasit/grpc-library/core"
 	"github.com/neiasit/service-boilerplate/internal/doctor/dto"
@@ -13,7 +15,6 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
-	"log/slog"
 )
 
 type DoctorHandlers struct {
@@ -81,7 +82,7 @@ func (h *DoctorHandlers) Next(ctx context.Context, rq *doctorgen.NextRq) (*docto
 //func (h *DoctorHandlers) GetHistory(ctx context.Context, rq *doctorgen.GetHistoryRq) (*doctorgen.GetHistoryRs, error) {
 //	//TODO implement me
 //	// Сорян забыл это сделать, а щас уже не успею реализовать
-//	// Алекс Жарков, пж пж пж пж не бейте Гошу и меня (((
+//	// Алекс Жарков, пж пж пж пж не бейте  меня (((
 //	panic("implement me")
 //}
 
